@@ -1,16 +1,15 @@
 <?php
 class Database {
-    private $host = "localhost";
-    private $db_name = "library_db";
-    private $username = "root";
-    private $password = "root";
-    private $port = "8889"; // MAMP default MySQL port
+    private $host = "sql308.infinityfree.com";
+    private $db_name = "if0_40310665_library_database";
+    private $username = "if0_40310665";
+    private $password = "Stinbora26."; // Replace with your InfinityFree account password
     public $conn;
 
     public function getConnection() {
         $this->conn = null;
         try {
-            $this->conn = new PDO("mysql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->db_name, $this->username, $this->password);
+            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             $this->conn->exec("set names utf8");
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch(PDOException $exception) {
