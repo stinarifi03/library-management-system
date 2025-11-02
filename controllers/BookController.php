@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../models/Book.php';
+require_once __DIR__ .'../models/Book.php';
 
 function handleImageUpload($file) {
     if($file['error'] === UPLOAD_ERR_OK) {

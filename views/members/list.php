@@ -5,7 +5,7 @@ if(!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once '../../models/Member.php';
+require_once __DIR__ .'../../models/Member.php';
 
 $member = new Member();
 $stmt = $member->read();

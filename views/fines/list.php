@@ -5,8 +5,8 @@ if(!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once '../../models/BorrowRecord.php';
-require_once '../../models/LibrarySettings.php';
+require_once __DIR__ .'../../models/BorrowRecord.php';
+require_once __DIR__ .'../../models/LibrarySettings.php';
 
 $borrowRecord = new BorrowRecord();
 $overdue_books = $borrowRecord->getOverdueBooks();

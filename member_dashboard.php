@@ -6,11 +6,11 @@ if(!isset($_SESSION['member_id'])) {
 }
 $member_id = $_SESSION['member_id'];
 
-require_once 'config/database.php';
-require_once 'models/Reservation.php';
+require_once __DIR__ .'config/database.php';
+require_once __DIR__ .'models/Reservation.php';
 
 // Get unread notifications count
-require_once 'models/Notification.php';
+require_once __DIR__ .'models/Notification.php';
 $notification = new Notification();
 $unread_notifications = $notification->getUnreadNotifications($member_id);
 $unread_count = $unread_notifications->rowCount();

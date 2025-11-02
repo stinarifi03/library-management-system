@@ -5,10 +5,10 @@ if(!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once '../../models/Reports.php';
-require_once '../../models/Book.php';
-require_once '../../models/Member.php';
-require_once '../../models/BorrowRecord.php';
+require_once __DIR__ .'../../models/Reports.php';
+require_once __DIR__ .'../../models/Book.php';
+require_once __DIR__ .'../../models/Member.php';
+require_once __DIR__ .'../../models/BorrowRecord.php';
 
 $reports = new Reports();
 $book = new Book();

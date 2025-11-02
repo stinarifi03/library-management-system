@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once '../models/BorrowRecord.php';
+require_once __DIR__ .'../models/BorrowRecord.php';
 
 // Handle borrowing a book
 if(isset($_POST['borrow_book'])) {
