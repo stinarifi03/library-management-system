@@ -1,6 +1,6 @@
 <?php
-require_once __DIR__ .'../config/database.php';
-require_once __DIR__ .'../models/BorrowRecord.php';
+require_once '../config/database.php';
+require_once '../models/BorrowRecord.php';
 
 $borrowRecord = new BorrowRecord();
 

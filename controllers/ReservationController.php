@@ -1,7 +1,7 @@
 <?php
 session_start();
-require_once __DIR__ .'../models/Reservation.php';
-require_once __DIR__ .'../models/Book.php';
+require_once '../models/Reservation.php';
+require_once '../models/Book.php';
 
 class ReservationController {
     private $reservation;
@@ -12,13 +12,11 @@ class ReservationController {
         $this->book = new Book();
     }
 
-    // Create reservation - FIXED VERSION
+    // Create reservation
     public function createReservation($book_id, $member_id) {
-        // Set the properties directly on the reservation object
         $this->reservation->book_id = $book_id;
         $this->reservation->member_id = $member_id;
         
-        // Call create without parameters
         return $this->reservation->create();
     }
 
@@ -38,14 +36,15 @@ if(isset($_POST['create_reservation'])) {
     $controller = new ReservationController();
     $result = $controller->createReservation($_POST['book_id'], $_SESSION['member_id']);
     
-    if($result === "success") {
-        // Get the position in queue from the reservation object
-        $position = $controller->getMemberReservations($_SESSION['member_id'])->fetch(PDO::FETCH_ASSOC)['position_in_queue'];
-        header("Location: ../member_dashboard.php?message=Book reserved successfully! You are in position #" . $position);
-    } else if($result === "already_reserved") {
-        header("Location: ../member_dashboard.php?error=You already have a reservation for this book!");
-    } else {
-        header("Location: ../member_dashboard.php?error=Failed to create reservation");
+    switch($result) {
+        case 'success':
+            header("Location: ../member_dashboard.php?message=Book reserved successfully! You are in position #" . $controller->reservation->position_in_queue);
+            break;
+        case 'already_reserved':
+            header("Location: ../member_dashboard.php?error=You already have a reservation for this book!");
+            break;
+        default:
+            header("Location: ../member_dashboard.php?error=Failed to create reservation");
     }
     exit;
 }

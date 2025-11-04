@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ .'../models/Member.php';
+require_once '../models/Member.php';
 
 // Handle different member actions
 if(isset($_POST['create_member'])) {

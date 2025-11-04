@@ -5,7 +5,7 @@ if(!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once __DIR__ .'../../models/Book.php';
+require_once '../../models/Book.php';
 
 $book = new Book();
 $stmt = $book->read();

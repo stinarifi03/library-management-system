@@ -5,7 +5,7 @@ if(!isset($_SESSION['user_id'])) {
     exit;
 }
 
-require_once __DIR__ .'../../models/Member.php';
+require_once '../../models/Member.php';
 
 $member = new Member();
 $member->id = isset($_GET['id']) ? $_GET['id'] : die('ERROR: Missing ID.');
